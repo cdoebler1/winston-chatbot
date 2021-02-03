@@ -1,22 +1,18 @@
-name: Feral Cat Robotics Core Module
+name: Winston Chatbot
 skillMetadata:
   sections:
-    - name: Options << Name of section
+    - name: Select a Chatbot
       fields:
-        - name: internal_python_variable_name
-          type: text
-          label: Setting Friendly Display Name
-          value: ""
-          placeholder: demo prompt in the input box
-    - name: Login << Name of another section
-      fields:
-        - type: label
-          label: Just a little bit of extra info for the user to understand following settings
-        - name: username
-          type: text
-          label: Username
-          value: ""
-        - name: password
-          type: password
-          label: Password
-          value: ""
+        - type: select
+          name: chatbot_brain
+          label: Botbrain
+          options: AnnaL|AnnaL
+          value: alice
+        - type: checkbox
+          label: Enable chatbot as fallback skill
+          name: enabled
+          value: "false"
+        - type: input
+          label: Number of chat lines before saving brain state
+          name: save_loop_threshold
+          value: 1
