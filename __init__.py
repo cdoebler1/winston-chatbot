@@ -138,9 +138,7 @@ class Chatbot(MycroftSkill):
 
     def converse(self, utterances, lang="en-us"):
         if self.chatting:
-            if self.voc_match(utterances[0],
-                              "StopKeyword") and self.voc_match(utterances[0],
-                                                                "ChatKeyword"):
+            if self.voc_match(utterances[0], "StopKeyword") and self.voc_match(utterances[0], "ChatKeyword"):
                 return False
 
             if not self.brain_loaded:
