@@ -95,25 +95,6 @@ class Chatbot(MycroftSkill):
         self.brain_loaded = False
         return
 
-    def handle_fallback(self, message):
-        """Mycroft fallback handler interfacing the AIML.
-
-        If enabled in home, this will parse a sentence and return answer from
-        the AIML engine.
-        """
-        if self.settings.get("enabled"):
-            if not self.brain_loaded:
-                self.load_brain()
-            utterance = message.data.get("utterance")
-            answer = self.ask_brain(utterance)
-            if answer != "":
-                asked_question = False
-                if answer.endswith("?"):
-                    asked_question = True
-                self.speak(answer, expect_response=asked_question)
-                return True
-        return False
-
     def shutdown(self):
         """Shut down any loaded brain."""
         if self.brain_loaded:
@@ -156,7 +137,6 @@ class Chatbot(MycroftSkill):
         return response
 
     def converse(self, utterances, lang="en-us"):
-        # check if stop intent will trigger
         if self.chatting:
             if self.voc_match(utterances[0],
                               "StopKeyword") and self.voc_match(utterances[0],
