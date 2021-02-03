@@ -144,21 +144,25 @@ class Chatbot(MycroftSkill):
 
     def converse(self, utterances, lang="en-us"):
         # check if stop intent will trigger
-        if self.voc_match(utterances[0],
-                          "StopKeyword") and self.voc_match(utterances[0],
-                                                            "ChatKeyword"):
-            return False
+        if self.chatting:
+            if self.voc_match(utterances[0],
+                              "StopKeyword") and self.voc_match(utterances[0],
+                                                                "ChatKeyword"):
+                return False
 
-        if not self.brain_loaded:
-            self.load_brain()
-        utterance = utterances
-        answer = self.ask_brain(utterance)
-        if answer != "":
-            asked_question = False
-            if answer.endswith("?"):
-                asked_question = True
-            self.speak(answer, expect_response=asked_question)
+            if not self.brain_loaded:
+                self.load_brain()
+            utterance = utterances
+            answer = self.ask_brain(utterance)
+            if answer != "":
+                asked_question = False
+                if answer.endswith("?"):
+                    asked_question = True
+                self.speak(answer, expect_response=asked_question)
+                return True
             return True
+        else:
+            return False
 
 
 def create_skill():
