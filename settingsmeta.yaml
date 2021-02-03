@@ -6,7 +6,7 @@ skillMetadata:
         - type: select
           name: chatbot_brain
           label: Botbrain
-          options: AnnaL|AnnaL
+          options: AnnaL|AnnaL;none|none
           value: alice
         - type: checkbox
           label: Enable chatbot as fallback skill
