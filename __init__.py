@@ -44,10 +44,6 @@ class Chatbot(MycroftSkill):
 
         self.brain_loaded = False
 
-    def initialize(self):
-        self.register_fallback(self.handle_fallback, 10)
-        return
-
     def load_brain(self):
         """Set up the aiml engine using available device information."""
         self.log.info('Loading Brain')
