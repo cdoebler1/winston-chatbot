@@ -29,20 +29,20 @@ class Chatbot(MycroftSkill):
 
     chatting = False
 
-    def __init__(self):
-        super(Chatbot, self).__init__(name='Winston_Chatbot')
-        self.kernel = aiml.Kernel()
+    #def __init__(self):
+    #    super(Chatbot, self).__init__(name='Winston_Chatbot')
+    self.kernel = aiml.Kernel()
 #        chatbot_brain = self.settings.get('chatbot_brain')
-        chatbot_brain = "AnnaL"
-        self.aiml_path = os.path.join(dirname(__file__), chatbot_brain)
-        self.brain_path = os.path.join(self.file_system.path, 'bot_brain.brn')
+    chatbot_brain = "AnnaL"
+    self.aiml_path = os.path.join(dirname(__file__), chatbot_brain)
+    self.brain_path = os.path.join(self.file_system.path, 'bot_brain.brn')
         # reloading skills will also reset this 'timer', so ideally it should
         # not be too high
-        self.line_count = 1
-        self.save_loop_threshold = int(self.settings.get('save_loop_threshold',
+    self.line_count = 1
+    self.save_loop_threshold = int(self.settings.get('save_loop_threshold',
                                                          4))
 
-        self.brain_loaded = False
+    self.brain_loaded = False
 
     def load_brain(self):
         """Set up the aiml engine using available device information."""
