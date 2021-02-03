@@ -142,16 +142,16 @@ class Chatbot(MycroftSkill):
             return True
         return False
 
-    def converse(self, message, lang="en-us"):
+    def converse(self, utterances, lang="en-us"):
         # check if stop intent will trigger
-        if self.voc_match(message[0],
-                          "StopKeyword") and self.voc_match(message[0],
+        if self.voc_match(utterances[0],
+                          "StopKeyword") and self.voc_match(utterances[0],
                                                             "ChatKeyword"):
             return False
 
         if not self.brain_loaded:
             self.load_brain()
-        utterance = message.data.get("utterance")
+        utterance = utterances
         answer = self.ask_brain(utterance)
         if answer != "":
             asked_question = False
