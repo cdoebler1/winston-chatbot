@@ -7,11 +7,7 @@ skillMetadata:
           name: chatbot_brain
           label: Botbrain
           options: AnnaL|AnnaL;none|none
-          value: alice
-        - type: checkbox
-          label: Enable chatbot as fallback skill
-          name: enabled
-          value: "false"
+          value: AnnaL
         - type: input
           label: Number of chat lines before saving brain state
           name: save_loop_threshold
