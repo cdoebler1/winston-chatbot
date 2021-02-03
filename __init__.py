@@ -142,6 +142,19 @@ class Chatbot(MycroftSkill):
             return True
         return False
 
+    def ask_brain(self, utterance):
+        """Send a query to the AIML brain.
+
+        Saves the state to disk once in a while.
+        """
+        response = self.kernel.respond(utterance)
+        # make a security copy once in a while
+        if (self.line_count % self.save_loop_threshold) == 0:
+            self.kernel.saveBrain(self.brain_path)
+        self.line_count += 1
+
+        return response
+
     def converse(self, utterances, lang="en-us"):
         # check if stop intent will trigger
         if self.chatting:
